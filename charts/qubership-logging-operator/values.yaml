@@ -114,6 +114,9 @@ pprof:
 # Image of qubership-logging-operator
 # operatorImage: ghcr.io/netcracker/qubership-logging-operator:main
 
+# Only pods which provide own keys can access the private registry.
+imagePullSecrets: []
+
 # skipMetricsService: false
 
 ## Pod monitor for qubership-logging-operator
