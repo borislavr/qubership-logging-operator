@@ -249,7 +249,7 @@ Image can be found from:
   {{- if .Values.operatorImage -}}
     {{- printf "%s" .Values.operatorImage -}}
   {{- else -}}
-    {{- print "logging-operator:main" -}}
+    {{- print "ghcr.io/netcracker/qubership-logging-operator:main" -}}
   {{- end -}}
 {{- end -}}
 

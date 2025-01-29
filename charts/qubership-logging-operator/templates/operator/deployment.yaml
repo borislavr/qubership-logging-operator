@@ -49,6 +49,7 @@ spec:
       {{- if .Values.priorityClassName }}
       priorityClassName: {{ .Values.priorityClassName }}
       {{- end }}
+      
       containers:
         - name: operator
           image: {{ template "logging-operator.image" . }}

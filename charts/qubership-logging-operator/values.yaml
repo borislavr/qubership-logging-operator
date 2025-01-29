@@ -112,7 +112,7 @@ pprof:
     labels: {}
 
 # Image of qubership-logging-operator
-# operatorImage: qubership-logging-operator:main
+# operatorImage: ghcr.io/netcracker/qubership-logging-operator:main
 
 # skipMetricsService: false
 
