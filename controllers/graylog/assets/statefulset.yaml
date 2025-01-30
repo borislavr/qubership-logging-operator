@@ -162,6 +162,10 @@ spec:
 {{ end }}
 {{ end }}
       serviceAccountName: logging-graylog
+      {{- with .Values.graylog.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
 {{ if and .Values.Graylog.NodeSelectorKey .Values.Graylog.NodeSelectorValue }}
       nodeSelector:
 {{ .Values.Graylog.NodeSelectorKey | indent 8 }}: {{ .Values.Graylog.NodeSelectorValue }}

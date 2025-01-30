@@ -154,6 +154,11 @@ graylog:
   #
   # dockerImage: graylog/graylog:5.2.7
 
+  # Only pods which provide own keys can access the private registry.
+  # Default: []
+  #
+  imagePullSecrets: []
+
   # A docker image of MongoDB to use for graylog deployment.
   # Type: string
   # Mandatory: yes
@@ -1058,6 +1063,11 @@ fluentd:
   #
   # dockerImage: ghcr.io/netcracker/qubership-fluentd:main
 
+  # Only pods which provide own keys can access the private registry.
+  # Default: []
+  #
+  imagePullSecrets: []
+
   configmapReload:
     #
     # dockerImage: jimmidyson/configmap-reload:v0.13.1
@@ -1598,6 +1608,11 @@ fluentbit:
   #
   # dockerImage: fluent/fluent-bit:3.0.6
 
+  # Only pods which provide own keys can access the private registry.
+  # Default: []
+  #
+  imagePullSecrets: []
+
   configmapReload:
     #
     # dockerImage: jimmidyson/configmap-reload:v0.13.1
@@ -2120,6 +2135,11 @@ fluentbit:
     #
     # dockerImage: fluent/fluent-bit:3.0.6
 
+    # Only pods which provide own keys can access the private registry.
+    # Default: []
+    #
+    imagePullSecrets: []
+
     configmapReload:
     # A docker image to use for FluentBit aggregator configmap reload sidecar.
     # Type: string
@@ -2550,11 +2570,15 @@ cloudEventsReader:
   #
   install: true
 
+  # Only pods which provide own keys can access the private registry.
+  #
+  imagePullSecrets: []
+
   # A docker image to use for Cloud Events Reader deployment.
   # Type: string
   # Mandatory: yes
   #
-  # dockerImage: ghcr.io/netcracker/k8s-events-reader:main
+  # dockerImage: ghcr.io/netcracker/qubership-kube-events-reader:main
 
   # The resources describe to compute resource requests and limits for single Pods.
   # Ref: https://kubernetes.io/docs/user-guide/compute-resources/

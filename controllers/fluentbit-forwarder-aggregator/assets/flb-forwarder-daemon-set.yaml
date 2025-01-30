@@ -239,6 +239,10 @@ spec:
           imagePullPolicy: IfNotPresent
       terminationGracePeriodSeconds: 30
       serviceAccountName: logging-fluentbit
+      {{- with .Values.fluentbit.imagePullSecrets }}
+      imagePullSecrets:
+        {{ - toYaml . | nindent 8 }}
+      {{- end }}
       schedulerName: default-scheduler
   updateStrategy:
     type: RollingUpdate

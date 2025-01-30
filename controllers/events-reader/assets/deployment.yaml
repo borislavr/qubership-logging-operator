@@ -32,10 +32,14 @@ spec:
       nodeSelector:
 {{ .Values.CloudEventsReader.NodeSelectorKey | indent 8 }}: {{ .Values.CloudEventsReader.NodeSelectorValue }}
 {{ end }}
+      {{- with .Values.cloudEventsReader.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: events-reader
           image: {{ .Values.CloudEventsReader.DockerImage }}
-          command: [ "/events-reader/eventsreader" ]
+          command: [ "/events-reader/qubership-kube-events-reader" ]
           {{- if .Values.CloudEventsReader.Args }}
           args:
             {{- range .Values.CloudEventsReader.Args }}

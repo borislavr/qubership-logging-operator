@@ -19,6 +19,10 @@ metadata:
 spec:
   replicas: {{ default "2" .Values.Fluentbit.Aggregator.Replicas }}
   serviceName: "logging-fluentbit-aggregator"
+  {{- with .Values.fluentbit.aggregator.imagePullSecrets }}
+  imagePullSecrets:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
   selector:
     matchLabels:
       name: logging-fluentbit-aggregator

@@ -43,6 +43,10 @@ spec:
     spec:
       terminationGracePeriodSeconds: 30
       serviceAccountName: logging-fluentd
+      {{- with .Values.fluentd.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: configmap-reload
           image: {{ .Values.Fluentd.ConfigmapReload.DockerImage }}
