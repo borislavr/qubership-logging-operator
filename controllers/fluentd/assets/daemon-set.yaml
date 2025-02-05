@@ -45,7 +45,7 @@ spec:
       serviceAccountName: logging-fluentd
       containers:
         - name: configmap-reload
-          image: {{ template "fluentd.image" . }}
+          image: {{ .Values.Fluentd.ConfigmapReload.DockerImage }}
           args:
             - --volume-dir=/fluentd/etc
             - --webhook-url=http://localhost:24444/api/config.reload
