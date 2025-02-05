@@ -45,7 +45,11 @@ spec:
       serviceAccountName: logging-fluentd
       {{- with .Values.fluentd.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
+        {{- if . }}
+        {{- range . }}
+          - name: {{ .name }}
+        {{- end }}
+        {{- end }}
       {{- end }}
       containers:
         - name: configmap-reload
