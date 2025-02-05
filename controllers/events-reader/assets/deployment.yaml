@@ -32,10 +32,6 @@ spec:
       nodeSelector:
 {{ .Values.CloudEventsReader.NodeSelectorKey | indent 8 }}: {{ .Values.CloudEventsReader.NodeSelectorValue }}
 {{ end }}
-      {{- with .Values.cloudEventsReader.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       containers:
         - name: events-reader
           image: {{ .Values.CloudEventsReader.DockerImage }}
