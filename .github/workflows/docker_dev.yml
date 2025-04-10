@@ -38,7 +38,7 @@ jobs:
           | if . then true else false end
           ')
           if [ ${verify} == 'true' ]; then
-            echo "✅ $GITHUB_WORKSPACE/.github/dev-docker-onfig.json file is valid"
+            echo "✅ $GITHUB_WORKSPACE/.github/dev-docker-config.json file is valid"
             components=$(jq -c ".components" "$GITHUB_WORKSPACE/.github/dev-docker-config.json")
             platforms=$(jq -c ".platforms" "$GITHUB_WORKSPACE/.github/dev-docker-config.json")
           else
