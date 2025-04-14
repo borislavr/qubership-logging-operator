@@ -1,0 +1,26 @@
+name: Check Tag actions
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name to check'
+        required: true
+        default: 'v1.0.0'
+
+jobs:
+  check-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check tag
+        uses: nookyo/qubership-workflow-hub/actions/tag-action@main
+        with:
+          ref: main
+          tag-name: "v1.0.0"
+          check-tag: "true"
+          create-tag: "true"
+          dry-run: "false"
