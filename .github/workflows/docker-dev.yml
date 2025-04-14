@@ -15,11 +15,6 @@ on:
         type: boolean
         default: false
         description: 'Dry run'
-      artifact-name:
-        required: false
-        type: string
-        default: ''
-        description: 'Artifact name'
 permissions:
   contents: write
   pull-requests: write
