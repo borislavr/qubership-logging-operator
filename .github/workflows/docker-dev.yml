@@ -1,4 +1,4 @@
-name: Build Docker Images with Matrix Strategy
+name: Build Docker with Matrix Strategy
 
 on:
   pull_request:
