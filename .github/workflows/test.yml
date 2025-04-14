@@ -6,6 +6,22 @@ on:
         description: 'Tag name to check'
         required: true
         default: 'v1.0.0'
+      check_tag:
+        description: 'Check tag existence'
+        required: true
+        default: 'true'
+      create_tag:
+        description: 'Create tag if it does not exist'
+        required: true
+        default: 'true'
+      delete_tag:
+        description: 'Delete tag if it exists'
+        required: true
+        default: 'true'
+      dry_run:
+        description: 'Dry run without making changes'
+        required: true
+        default: 'false'
 
 jobs:
   check-tag:
@@ -20,7 +36,8 @@ jobs:
         uses: nookyo/qubership-workflow-hub/actions/tag-action@main
         with:
           ref: main
-          tag-name: "v1.0.0"
-          check-tag: "true"
-          create-tag: "true"
-          dry-run: "false"
+          tag-name: "${{ github.event.inputs.tag_name }}"
+          check-tag: "${{ github.event.inputs.check_tag }}"
+          create-tag: "${{ github.event.inputs.create_tag }}"
+          delete-tag: "${{ github.event.inputs.delete_tag }}"
+          dry-run: "${{ github.event.inputs.dry_run }}"
