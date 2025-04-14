@@ -9,19 +9,24 @@ on:
       check_tag:
         description: 'Check tag existence'
         required: true
-        default: 'true'
+        type: boolean
+        default: true
       create_tag:
         description: 'Create tag if it does not exist'
         required: true
-        default: 'true'
+        type: boolean
+        default: true
       delete_tag:
         description: 'Delete tag if it exists'
         required: true
-        default: 'true'
+        type: boolean
+        default: true
       dry_run:
         description: 'Dry run without making changes'
+        type: boolean
         required: true
-        default: 'false'
+        default: false
+
 
 jobs:
   check-tag:
