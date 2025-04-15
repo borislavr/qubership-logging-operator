@@ -88,8 +88,8 @@ jobs:
           echo "tags: ${TAGS}" >> $GITHUB_STEP_SUMMARY
           echo "github.head_ref = ${{ github.head_ref }}"
 
-      - name: Echo tags
-        run: echo "Tags result ${{ steps.prepare_tags.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
+      - name: Echo metadata
+        run: echo "Metadata result ${{  steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
 
   # build:
   #   name: "Build Docker Images"
