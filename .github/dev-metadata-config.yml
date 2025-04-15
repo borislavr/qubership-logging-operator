@@ -5,4 +5,4 @@ branches-template:
 - bugfix/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
 dist-tags:
 - main: "main"
-- feature/*: "latest"
+- feature/*: "mazafaka"
