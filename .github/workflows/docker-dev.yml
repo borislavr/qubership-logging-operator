@@ -74,23 +74,6 @@ jobs:
       - name: Echo metadata
         run: echo "Metadata result ${{ steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
 
-      - name: Prepare tags
-        id: prepare_tags
-        run: |
-          BASE_TAG="${{ steps.metadata.outputs.result }}"
-          EXTRA_TAG="${{ github.event.inputs.tags }}"
-          if [ -n "$EXTRA_TAG" ]; then
-            TAGS="${BASE_TAG}, ${EXTRA_TAG}"
-          else
-            TAGS="${BASE_TAG}"
-          fi
-          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
-          echo "tags: ${TAGS}" >> $GITHUB_STEP_SUMMARY
-          echo "github.head_ref = ${{ github.head_ref }}"
-
-      - name: Echo metadata
-        run: echo "Metadata result ${{  steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
-
   # build:
   #   name: "Build Docker Images"
   #   needs: [load_config, perform-version]
