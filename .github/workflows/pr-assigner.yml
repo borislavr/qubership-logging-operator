@@ -16,6 +16,6 @@ jobs:
 
     - uses: nookyo/qubership-workflow-hub/actions/pr-assigner@main
       with:
-        assignees-count: 2
+        suffle-count: 2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
