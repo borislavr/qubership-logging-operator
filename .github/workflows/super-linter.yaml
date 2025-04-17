@@ -33,9 +33,10 @@ jobs:
         sparse-checkout: |
           .github/linters
           .github/super-linter.env
-    - name: "Debug"
+    - name: "Summary"
       run: |
-        pwd
+        echo "ℹ️ The common super-linter linters configuration downloaded from" >> $GITHUB_STEP_SUMMARY
+        echo "https://github.com/Netcracker/.github/tree/main/.github/linters"  >> $GITHUB_STEP_SUMMARY
         ls -laR .
     - name: "Upload the common linters configsuration"
       uses: actions/upload-artifact@v4
@@ -92,5 +93,4 @@ jobs:
         DEFAULT_BRANCH: "main"
         # To report GitHub Actions status checks
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        DEFAULT_WORKSPACE: ${{ github.workspace }}/code-to-lint
-#        LINTER_RULES_PATH: ${{ github.workspace }}/super-linter-common-configs/.github/linters
+
