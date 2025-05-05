@@ -1,8 +1,7 @@
 branches-template:
-  - main: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}, {{dist-tag}}"
-  - feature/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}, {{dist-tag}}"
-  - hotfix/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
-  - bugfix/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
-distribution-tag:
-  - main: "main"
-  - feature/*: "mazafaka"
+- main: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
+- feature/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
+- hotfix/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
+- bugfix/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
+distribution-tags:
+- main: "main"
