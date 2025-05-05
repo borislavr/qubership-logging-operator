@@ -12,11 +12,9 @@ on:
       included-tags:
         description: "Tags to include for deletion"
         required: false
-        default: "dev*"
       excluded-tags:
         description: "Tags to exclude from deletion"
         required: false
-        default: "release*"
       dry-run:
         description: "Enable dry-run mode"
         type: boolean
