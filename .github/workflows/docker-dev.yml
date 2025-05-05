@@ -76,7 +76,7 @@ jobs:
 
   build:
     name: "Build Docker Images"
-    needs: [perform-version]
+    needs: [load_config, perform-version]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
