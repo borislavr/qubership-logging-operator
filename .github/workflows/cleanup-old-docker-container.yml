@@ -39,4 +39,4 @@ jobs:
           excluded-tags: 'release*'
           dry-run: ${{ github.event.inputs.dry-run }}
         env:
-          PACKAGE_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          PACKAGE_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
