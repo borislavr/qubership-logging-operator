@@ -1,10 +1,6 @@
 name: Build Docker with Matrix Strategy
 
 on:
-  pull_request:
-      types: [opened, synchronize, reopened]
-      branches:
-        - main
   workflow_dispatch:
     inputs:
       tags:
@@ -17,6 +13,11 @@ on:
         type: boolean
         default: false
         description: 'Dry run'
+
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   load_config:
     name: "Load Docker Configuration"
@@ -65,7 +66,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create name
-        uses: nookyo/qubership-workflow-hub/actions/metadata-action@main
+        uses: netcracker/qubership-workflow-hub/actions/metadata-action@main
         id: metadata
         with:
           configuration-path: .github/dev-metadata-config.yml
@@ -73,6 +74,20 @@ jobs:
 
       - name: Echo metadata
         run: echo "Metadata result ${{ steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Prepare tags
+        id: prepare_tags
+        run: |
+          BASE_TAG="${{ steps.metadata.outputs.result }}"
+          EXTRA_TAG="${{ github.event.inputs.tags }}"
+          if [ -n "$EXTRA_TAG" ]; then
+            TAGS="${BASE_TAG}, ${EXTRA_TAG}"
+          else
+            TAGS="${BASE_TAG}"
+          fi
+          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
+          echo "tags: ${TAGS}" >> $GITHUB_STEP_SUMMARY
+          echo "github.head_ref = ${{ github.head_ref }}"
 
   build:
     name: "Build Docker Images"
@@ -84,7 +99,7 @@ jobs:
         component: ${{ fromJson(needs.load_config.outputs.components) }}
     steps:
       - name: Docker
-        uses: nookyo/qubership-workflow-hub/actions/docker-action@main
+        uses: netcracker/qubership-workflow-hub/actions/docker-action@main
         with:
           ref: ${{ github.ref }}
           dry-run: ${{ inputs.dry-run }}
