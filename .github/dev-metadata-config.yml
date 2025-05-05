@@ -3,6 +3,6 @@ branches-template:
   - feature/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}, {{dist-tag}}"
   - hotfix/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
   - bugfix/*: "{{ref-name}}-{{timestamp}}, {{ref-name}}-{{short-sha}}, {{short-sha}}"
-distribution-tags:
+distribution-tag:
   - main: "main"
   - feature/*: "mazafaka"
