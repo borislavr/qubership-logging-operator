@@ -12,15 +12,16 @@ on:
       included-tags:
         description: "Tags to include for deletion"
         required: false
-        default: ""
+        default: "dev*"
       excluded-tags:
         description: "Tags to exclude from deletion"
         required: false
         default: "release*"
       dry-run:
         description: "Enable dry-run mode"
+        type: boolean
         required: false
-        default: "false"
+        default: true
 
 jobs:
   cleanup:
@@ -36,6 +37,6 @@ jobs:
           threshold-days: 0
           included-tags: 'dev*'
           excluded-tags: 'release*'
-          dry-run: true
+          dry-run: ${{ github.event.inputs.dry-run }}
         env:
           PACKAGE_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
