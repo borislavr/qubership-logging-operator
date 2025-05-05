@@ -1,8 +1,8 @@
 name: Cleanup Old Docker Images
 
 on:
-  schedule:
-    - cron: "0 0 * * 0" # Runs weekly on Sunday at midnight
+  # schedule:
+  #   - cron: "0 0 * * 0" # Runs weekly on Sunday at midnight
   workflow_dispatch:
     inputs:
       threshold-days:
@@ -34,9 +34,9 @@ jobs:
       - name: Run Container Package Cleanup Action
         uses: Netcracker/qubership-workflow-hub/actions/container-package-cleanup@main
         with:
-          threshold-days: 0
-          included-tags: 'dev*'
-          excluded-tags: 'release*'
+          threshold-days: ${{ github.event.inputs.threshold-days }}
+          included-tags:  ${{ github.event.inputs.included-tags }}
+          excluded-tags:  ${{ github.event.inputs.excluded-tags }}
           dry-run: ${{ github.event.inputs.dry-run }}
         env:
           PACKAGE_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
