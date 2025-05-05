@@ -1,0 +1,23 @@
+name: Test upload assets
+
+on:
+  workflow_dispatch:
+
+jobs:
+    upload-assets:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+
+          - name: Upload assets
+            uses: nookyo/qubership-workflow-hub/actions/archive-and-upload-assets@main
+            with:
+              config-path: ".github/workflows/assets-config.yaml"
+              ref: "main"
+            #     files: |
+            #         .github/workflows/assets.yaml
+            #         .github/workflows/cleanup-old-docker-container.yml
+            #         .github/workflows/automatic-pr-labeler.yaml
+            #     commit-message: "Upload assets for testing"
+            #     commit-branch: "test-upload-assets"
