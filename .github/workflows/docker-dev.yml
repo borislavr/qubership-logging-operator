@@ -71,6 +71,7 @@ jobs:
         with:
           configuration-path: .github/dev-metadata-config.yml
           short-sha: 11
+           extra-tags: ${{ github.event.inputs.tags }}
 
       - name: Echo metadata
         run: echo "Metadata result ${{ steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
