@@ -13,6 +13,11 @@ on:
         type: boolean
         default: false
         description: 'Dry run'
+      merge-extra-tags:
+        required: false
+        type: boolean
+        default: true
+        description: 'Merge extra tags to metadata'
 
 permissions:
   contents: read
@@ -72,6 +77,7 @@ jobs:
           configuration-path: .github/dev-metadata-config.yml
           short-sha: 11
           extra-tags: ${{ github.event.inputs.tags }}
+          merge-extra-tags: ${{ github.event.inputs.merge-extra-tags }}
 
       - name: Echo metadata
         run: |
