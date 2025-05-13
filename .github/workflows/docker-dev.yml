@@ -71,24 +71,26 @@ jobs:
         with:
           configuration-path: .github/dev-metadata-config.yml
           short-sha: 11
-           extra-tags: ${{ github.event.inputs.tags }}
+          extra-tags: ${{ github.event.inputs.tags }}
 
       - name: Echo metadata
-        run: echo "Metadata result ${{ steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
-
-      - name: Prepare tags
-        id: prepare_tags
         run: |
-          BASE_TAG="${{ steps.metadata.outputs.result }}"
-          EXTRA_TAG="${{ github.event.inputs.tags }}"
-          if [ -n "$EXTRA_TAG" ]; then
-            TAGS="${BASE_TAG}, ${EXTRA_TAG}"
-          else
-            TAGS="${BASE_TAG}"
-          fi
-          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
-          echo "tags: ${TAGS}" >> $GITHUB_STEP_SUMMARY
-          echo "github.head_ref = ${{ github.head_ref }}"
+           echo "Metadata result ${{ steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
+           echo "extra-tags: ${{ github.event.inputs.tags }}" >> $GITHUB_STEP_SUMMARY
+
+      # - name: Prepare tags
+      #   id: prepare_tags
+      #   run: |
+      #     BASE_TAG="${{ steps.metadata.outputs.result }}"
+      #     EXTRA_TAG="${{ github.event.inputs.tags }}"
+      #     if [ -n "$EXTRA_TAG" ]; then
+      #       TAGS="${BASE_TAG}, ${EXTRA_TAG}"
+      #     else
+      #       TAGS="${BASE_TAG}"
+      #     fi
+      #     echo "tags=${TAGS}" >> $GITHUB_OUTPUT
+      #     echo "tags: ${TAGS}" >> $GITHUB_STEP_SUMMARY
+      #     echo "github.head_ref = ${{ github.head_ref }}"
 
   build:
     name: "Build Docker Images"
@@ -107,6 +109,7 @@ jobs:
           download-artifact: false
           component: ${{ toJson(matrix.component) }}
           platforms: ${{ needs.load_config.outputs.platforms }}
+          #tags: ${{ needs.perform-version.outputs.tags }}
           tags: ${{ needs.perform-version.outputs.tags }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
