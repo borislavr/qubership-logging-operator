@@ -77,7 +77,7 @@ jobs:
           configuration-path: .github/dev-metadata-config.yml
           short-sha: 11
           extra-tags: ${{ github.event.inputs.tags }}
-          merge-tags: ${{ github.event.inputs.merge-extra-tags }}
+          # merge-tags: ${{ github.event.inputs.merge-extra-tags }}
           default-template: "{{ref-name}}-{{timestamp}}-{{short-sha}}"
           default-tag: "my_tag"
 
