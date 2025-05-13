@@ -78,6 +78,8 @@ jobs:
           short-sha: 11
           extra-tags: ${{ github.event.inputs.tags }}
           merge-tags: ${{ github.event.inputs.merge-extra-tags }}
+          default-template: "{{ name.sha.timestampt}}"
+          default-tag: "my_tag"
 
       # - name: Echo metadata
       #   run: |
