@@ -6,3 +6,5 @@ branches-template:
 distribution-tag:
   - main: "main"
   - feature/*: "mazafaka"
+default-tag: "config_tag"
+default-template: "{{ name.sha.timestamp }}"
