@@ -79,10 +79,10 @@ jobs:
           extra-tags: ${{ github.event.inputs.tags }}
           merge-tags: ${{ github.event.inputs.merge-extra-tags }}
 
-      - name: Echo metadata
-        run: |
-           echo "Metadata result ${{ steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
-           echo "extra-tags: ${{ github.event.inputs.tags }}" >> $GITHUB_STEP_SUMMARY
+      # - name: Echo metadata
+      #   run: |
+      #      echo "Metadata result ${{ steps.metadata.outputs.result }}" >> $GITHUB_STEP_SUMMARY
+      #      echo "extra-tags: ${{ github.event.inputs.tags }}" >> $GITHUB_STEP_SUMMARY
 
       # - name: Prepare tags
       #   id: prepare_tags
