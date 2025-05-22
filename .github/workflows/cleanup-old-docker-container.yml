@@ -20,6 +20,11 @@ on:
         type: boolean
         required: false
         default: true
+      debug:
+        description: "Enable debug mode"
+        type: boolean
+        required: false
+        default: true
 
 jobs:
   cleanup:
@@ -36,5 +41,6 @@ jobs:
           included-tags:  ${{ github.event.inputs.included-tags }}
           excluded-tags:  ${{ github.event.inputs.excluded-tags }}
           dry-run: ${{ github.event.inputs.dry-run }}
+          debug: ${{ github.event.inputs.debug }}
         env:
           PACKAGE_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
