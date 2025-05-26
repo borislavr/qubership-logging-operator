@@ -1,0 +1,16 @@
+name: Chart Test
+on:
+  workflow_dispatch:
+jobs:
+  chart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.14.2
+
+      - name: Run Chart Test Action
+        uses: nookyo/qubership-workflow-hub/actions/chart-release@main
