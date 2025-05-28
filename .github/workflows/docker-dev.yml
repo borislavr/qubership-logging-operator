@@ -79,7 +79,7 @@ jobs:
           extra-tags: ${{ github.event.inputs.tags }}
           # merge-tags: ${{ github.event.inputs.merge-extra-tags }}
           default-template: "{{ref-name}}-{{timestamp}}-{{github.context.sha}}"
-          default-tag: "my_tag"
+          # default-tag: "my_tag"
           dry-run: ${{ inputs.dry-run }}
 
       # - name: Echo metadata
