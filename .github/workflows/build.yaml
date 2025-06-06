@@ -48,7 +48,7 @@ jobs:
         - name: qubership-logging-transfer
           file: docker-transfer/Dockerfile
           context: ""
-    runs-on: ubuntu-latest
+    runs-on: logging-operator-runner
     name: ${{ matrix.component.name }}
     steps:
     - name: Checkout
