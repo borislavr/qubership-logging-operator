@@ -1,5 +1,7 @@
 # qubership-logging-operator
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/borislavr/qubership-logging-operator/badge)](https://scorecard.dev/viewer/?uri=github.com/borislavr/qubership-logging-operator)
+
 The Logging Operator deploys in Kubernetes next components:
 
 * Graylog
